@@ -59,7 +59,7 @@ class OffsitePaypalBackend(object):
         "business": settings.PAYPAL_RECEIVER_EMAIL,
         "currency_code": settings.PAYPAL_CURRENCY_CODE,
         "amount": self.shop.get_order_total(order),
-        "item_name": self.shop.get_order_short_name(order),
+        "item_name": "Products and shipping (id=%s)" % order.id,
         "invoice": self.shop.get_order_unique_id(order),
         "notify_url": '%s://%s%s' % (url_scheme,
             url_domain, reverse('paypal-ipn')),  # defined by django-paypal
